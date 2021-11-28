@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "firebase-admin": "^10.0.0",
+    "mongodb": "^4.1.4",
+    "nodemon": "^2.0.15",
+    "stripe": "^8.190.0"
+  },
+  "name": "kick-off-server-side",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programming-hero-web-course-4/niche-website-server-side-rayeemomayeer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/programming-hero-web-course-4/niche-website-server-side-rayeemomayeer/issues"
+  },
+  "homepage": "https://github.com/programming-hero-web-course-4/niche-website-server-side-rayeemomayeer#readme",
+  "description": ""
+}
