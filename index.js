@@ -43,6 +43,7 @@ async function run(){
     await client.connect();
     const database = client.db('KickOff')
     const myOrdersCollection = database.collection('myOrders');
+    const cartCollection = database.collection('cart');
     const usersCollection = database.collection('users');
     const reviewsCollection = database.collection('reviews');
     const productsCollection = database.collection('products');
@@ -108,6 +109,7 @@ async function run(){
       res.json(result);
     })
 
+    // myorders collection
     app.get('/myOrders', async (req, res) => {
       const email = req.query.email;  
       const query = {email: email};
@@ -128,6 +130,28 @@ async function run(){
       const result = await  myOrdersCollection.deleteOne(query);
       res.json(result);
     })
+
+    //cart collection
+    app.get("/cart", async (req, res) => {
+      const email = req.query.email;
+      const query = { email: email };
+      const cursor = cartCollection.find(query);
+      const myOrders = await cursor.toArray();
+      res.json(myOrders);
+    });
+
+    app.post("/cart", verifyToken, async (req, res) => {
+      const myOrders = req.body;
+      const result = await cartCollection.insertOne(myOrders);
+      res.json(result);
+    });
+
+    app.delete("/cart/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: ObjectId(id) };
+      const result = await cartCollection.deleteOne(query);
+      res.json(result);
+    });
 
     app.get('/users/:email', async (req, res)=>{
       const email = req.params.email;
